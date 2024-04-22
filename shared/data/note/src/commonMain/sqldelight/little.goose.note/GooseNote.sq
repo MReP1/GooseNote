@@ -1,0 +1,79 @@
+CREATE TABLE note(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL DEFAULT "",
+    time INTEGER NOT NULL,
+    content TEXT NOT NULL DEFAULT ""
+);
+
+CREATE TABLE note_content_block(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    note_id INTEGER,
+    `index` INTEGER NOT NULL,
+    content TEXT NOT NULL DEFAULT ""
+);
+
+insertOrReplaceNote:
+    INSERT OR REPLACE INTO note(id, title, time, content)
+    VALUES (:id, :title, :time, :content);
+
+lastInsertedNoteRowId:
+    SELECT last_insert_rowid() FROM note;
+
+getNote:
+    SELECT * FROM note
+    WHERE id = :id;
+
+getAllNote:
+    SELECT * FROM note;
+
+getAllNoteContentBlock:
+    SELECT * FROM note_content_block;
+
+getNoteWithContentWithNoteId {
+    SELECT * FROM note
+    JOIN note_content_block
+    ON note.id = note_content_block.note_id
+    WHERE note.id = :noteId
+    ORDER BY note_content_block.`index` ASC;
+}
+
+getNoteWithContents {
+    SELECT * FROM note
+    JOIN note_content_block
+    ON note.id = note_content_block.note_id
+    ORDER BY note_content_block.`index` ASC;
+}
+
+getNoteWithContentsByKeyword {
+    SELECT * FROM note
+    JOIN note_content_block
+    ON note.id = note_content_block.note_id
+    WHERE note.title LIKE '%'|| :keyWord ||'%' OR note_content_block.content LIKE '%'|| :keyWord ||'%'
+    ORDER BY note_content_block.`index` ASC;
+}
+
+getNoteContentBlocks:
+    SELECT * FROM note_content_block
+    WHERE note_id = :noteId;
+
+insertOrReplaceNoteContentBlock:
+    INSERT OR REPLACE INTO note_content_block
+    VALUES (?, ?, ?, ?);
+
+lastInsertedNoteContentBlockId:
+    SELECT last_insert_rowid() FROM note_content_block;
+
+deleteNoteContentBlock:
+    DELETE FROM note_content_block
+    WHERE id = :id;
+
+deleteNoteContentBlockWithNoteId:
+    DELETE FROM note_content_block
+    WHERE note_id = :noteId;
+
+deleteNoteAndItsBlocks {
+    DELETE FROM note
+    WHERE id = :id;
+    DELETE FROM note_content_block
+    WHERE note_id = :id;
+}
