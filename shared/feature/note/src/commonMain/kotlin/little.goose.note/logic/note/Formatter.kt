@@ -2,9 +2,9 @@
 
 package little.goose.note.logic.note
 
-import androidx.compose.foundation.text2.input.TextFieldState
-import androidx.compose.foundation.text2.input.delete
-import androidx.compose.foundation.text2.input.insert
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.delete
+import androidx.compose.foundation.text.input.insert
 import little.goose.data.note.bean.NoteContentBlock
 import little.goose.note.util.FormatType
 import little.goose.note.util.orderListNum

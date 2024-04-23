@@ -3,9 +3,9 @@
 package little.goose.note.logic.note
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.text2.input.TextFieldState
-import androidx.compose.foundation.text2.input.placeCursorAtEnd
-import androidx.compose.foundation.text2.input.textAsFlow
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.placeCursorAtEnd
+import androidx.compose.foundation.text.input.textAsFlow
 import androidx.compose.ui.focus.FocusRequester
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.launchIn

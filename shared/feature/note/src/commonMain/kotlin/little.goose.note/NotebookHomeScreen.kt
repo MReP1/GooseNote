@@ -20,14 +20,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
 import little.goose.note.ui.notebook.NoteColumnState
 import little.goose.note.ui.notebook.NotebookHome
 import little.goose.note.ui.notebook.NotebookIntent
 import little.goose.note.ui.notebook.rememberNotebookHomeStateHolder
-import little.goose.note.ui.search.SearchNoteScreen
+import little.goose.note.ui.search.navToSearchNote
 import little.goose.resource.GooseRes
 import little.goose.shared.ui.button.MovableActionButton
 import little.goose.shared.ui.button.MovableActionButtonState
@@ -36,18 +35,17 @@ import little.goose.shared.ui.dialog.DeleteDialog
 import little.goose.shared.ui.dialog.DeleteDialogState
 import org.jetbrains.compose.resources.getString
 
-object NotebookHomeScreen : Screen {
+const val ROUTE_NOTEBOOK_HOME = "notebook_home"
 
-    @Composable
-    override fun Content() {
-        val navigator = LocalNavigator.currentOrThrow
-        NotebookHomeRoute(
-            modifier = Modifier.fillMaxSize(),
-            onNavigateToNote = { navigator.push(NoteScreen(it)) },
-            onNavigateToSearch = { navigator.push(SearchNoteScreen) }
-        )
-    }
-
+fun NavGraphBuilder.navNotebookHome(
+    onNavigateToNote: (Long) -> Unit,
+    onNavigateToSearch: () -> Unit
+) = composable(ROUTE_NOTEBOOK_HOME) {
+    NotebookHomeRoute(
+        modifier = Modifier.fillMaxSize(),
+        onNavigateToNote = onNavigateToNote,
+        onNavigateToSearch = onNavigateToSearch
+    )
 }
 
 @Composable

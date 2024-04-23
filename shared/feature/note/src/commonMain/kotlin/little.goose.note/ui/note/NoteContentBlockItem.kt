@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text2.BasicTextField2
-import androidx.compose.foundation.text2.input.TextFieldState
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -127,7 +127,7 @@ fun NoteContentBlockTextField(
         shape = MaterialTheme.shapes.large,
         tonalElevation = tonalElevation
     ) {
-        BasicTextField2(
+        BasicTextField(
             modifier = Modifier
                 .padding(horizontal = 16.dp, vertical = 10.dp)
                 .fillMaxWidth()

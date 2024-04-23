@@ -1,23 +1,28 @@
 package little.goose.note
 
-import androidx.compose.animation.core.LinearOutSlowInEasing
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import cafe.adriel.voyager.navigator.Navigator
-import cafe.adriel.voyager.transitions.SlideTransition
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import little.goose.note.ui.search.navToSearchNote
+import little.goose.note.ui.search.searchNoteRoute
 
 @Composable
 fun NoteApp() {
-    Navigator(NotebookHomeScreen) { navigator ->
-        SlideTransition(
-            navigator,
-            modifier = Modifier.fillMaxSize(),
-            animationSpec = tween(
-                durationMillis = 280,
-                easing = LinearOutSlowInEasing
-            )
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = ROUTE_NOTEBOOK_HOME
+    ) {
+        navNotebookHome(
+            onNavigateToNote = navController::navToNote,
+            onNavigateToSearch = navController::navToSearchNote
+        )
+        noteRoute(
+            onBack = navController::popBackStack
+        )
+        searchNoteRoute(
+            onBack = navController::popBackStack,
+            navigateToNote = navController::navToNote
         )
     }
 }

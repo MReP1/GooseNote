@@ -34,22 +34,18 @@ kotlin {
             implementation(project(":shared:ui"))
             implementation(project(":shared:resource"))
             implementation(libs.koin.compose)
-            implementation(libs.voyager.navigator)
-            implementation(libs.voyager.koin)
-            implementation(libs.voyager.screenModel)
-            implementation(libs.voyager.transitions)
+            implementation(libs.compose.navigation)
+            implementation(libs.compose.viewModel)
         }
         androidMain.dependencies {
             implementation(libs.koin.android)
-            implementation(libs.androidx.compose.ui.tool.preview)
         }
         iosMain.dependencies {
-            implementation("co.touchlab:stately-common:2.0.5")
-            implementation(compose.material)
         }
     }
 
 }
+
 
 android {
     namespace = "little.goose.feature.note"

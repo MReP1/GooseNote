@@ -11,33 +11,30 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-import little.goose.note.NoteScreen
-import little.goose.resource.GooseRes
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
 import little.goose.shared.ui.screen.LittleGooseEmptyScreen
 import little.goose.shared.ui.screen.LittleGooseLoadingScreen
 import little.goose.shared.ui.search.SearchScreen
-import org.jetbrains.compose.resources.getString
 
-object SearchNoteScreen : Screen {
+const val ROUTE_SEARCH_NOTE = "search_note"
 
-    @Composable
-    override fun Content() {
-        val navigator = LocalNavigator.currentOrThrow
-        SearchNoteRoute(
-            modifier = Modifier.fillMaxSize(),
-            onNavigateToNote = { navigator.push(NoteScreen(it)) },
-            onBack = navigator::pop
-        )
-    }
+fun NavController.navToSearchNote() {
+    navigate(ROUTE_SEARCH_NOTE)
+}
 
+fun NavGraphBuilder.searchNoteRoute(
+    navigateToNote: (Long) -> Unit,
+    onBack: () -> Unit
+) = composable(ROUTE_SEARCH_NOTE) {
+    SearchNoteRoute(
+        modifier = Modifier.fillMaxSize(),
+        onNavigateToNote = navigateToNote,
+        onBack = onBack
+    )
 }
 
 @Composable
