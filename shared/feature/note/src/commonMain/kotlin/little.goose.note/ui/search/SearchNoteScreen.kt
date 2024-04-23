@@ -2,6 +2,8 @@ package little.goose.note.ui.search
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.FastOutLinearInEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
@@ -29,7 +31,28 @@ fun NavController.navToSearchNote() {
 fun NavGraphBuilder.searchNoteRoute(
     navigateToNote: (Long) -> Unit,
     onBack: () -> Unit
-) = composable(ROUTE_SEARCH_NOTE) {
+) = composable(
+    route = ROUTE_SEARCH_NOTE,
+    enterTransition = {
+        fadeIn(
+            animationSpec = tween(200, easing = LinearOutSlowInEasing)
+        ) + slideIntoContainer(
+            towards = AnimatedContentTransitionScope.SlideDirection.Down,
+            animationSpec = tween(200, easing = LinearOutSlowInEasing),
+            initialOffset = { it / 6 }
+        )
+    },
+    exitTransition = null,
+    popExitTransition = {
+        fadeOut(
+            animationSpec = tween(200, easing = FastOutLinearInEasing)
+        ) + slideOutOfContainer(
+            towards = AnimatedContentTransitionScope.SlideDirection.Up,
+            animationSpec = tween(200, easing = FastOutLinearInEasing),
+            targetOffset = { it / 6 }
+        )
+    },
+) {
     SearchNoteRoute(
         modifier = Modifier.fillMaxSize(),
         onNavigateToNote = navigateToNote,
