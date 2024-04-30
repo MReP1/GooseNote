@@ -54,27 +54,21 @@ fun Project.configureKotlin(
             sourceCompatibility = AndroidConfigConventions.JAVA_VERSION
             targetCompatibility = AndroidConfigConventions.JAVA_VERSION
         }
-        kotlinOptions {
-            jvmTarget = AndroidConfigConventions.JAVA_VERSION.toString()
-            freeCompilerArgs = freeCompilerArgs.toMutableList().apply {
-                addAll(
-                    listOf(
-                        "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-                        "-opt-in=androidx.compose.animation.ExperimentalAnimationApi",
-                        "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-                        "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi"
-                    )
-                )
-                // open Kotlin context feature
-                add("-Xcontext-receivers")
-            }
-        }
     }
 
     tasks.withType<KotlinCompile>().configureEach {
         compilerOptions {
             // JVM 17 not support sealed class, so use JVM 11 yet.
             jvmTarget.set(JvmTarget.fromTarget(AndroidConfigConventions.JAVA_VERSION.toString()))
+            freeCompilerArgs.addAll(
+                "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-opt-in=androidx.compose.animation.ExperimentalAnimationApi",
+                "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+                "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
+
+                // open Kotlin context feature
+                "-Xcontext-receivers"
+            )
         }
     }
 
