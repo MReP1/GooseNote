@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.jetbrains.compose) apply false
+    alias(libs.plugins.jetbrains.compose.compiler) apply false
 
     // Run ./gradlew dependencyUpdates to check for dependency updates
     id("com.github.ben-manes.versions") version "0.47.0"

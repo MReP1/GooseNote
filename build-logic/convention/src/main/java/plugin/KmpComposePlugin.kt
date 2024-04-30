@@ -2,6 +2,7 @@ package plugin
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
@@ -11,6 +12,7 @@ class KmpComposePlugin : Plugin<Project> {
         with(project) {
             with(pluginManager) {
                 apply(libs.findPlugin("jetbrains-compose").get().get().pluginId)
+                apply(libs.findPlugin("jetbrains-compose-compiler").get().get().pluginId)
             }
             applyComposeStrongSkippingMode()
 

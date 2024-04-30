@@ -2,8 +2,8 @@
 
 package little.goose.note.logic.note
 
-import androidx.compose.foundation.text.input.TextFieldState
-import androidx.compose.foundation.text.input.textAsFlow
+import androidx.compose.foundation.text2.input.TextFieldState
+import androidx.compose.foundation.text2.input.textAsFlow
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.NonCancellable

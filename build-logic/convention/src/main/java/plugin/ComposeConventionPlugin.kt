@@ -11,29 +11,18 @@ class ComposeConventionPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         with(project) {
-            applyAndroid<CommonExtension<*, *, *, *, *, *>> {
-                configureCompose(libs)
+            with(pluginManager) {
+                apply(
+                    libs.findPlugin("jetbrains-compose-compiler")
+                        .get().get().pluginId
+                )
             }
-            applyDependencies(libs)
+            val bom = libs.findLibrary("androidx-compose-bom").get()
+            dependencies {
+                add("implementation", platform(bom))
+                add("androidTestImplementation", platform(bom))
+            }
             applyComposeStrongSkippingMode()
-        }
-    }
-
-    private fun CommonExtension<*, *, *, *, *, *>.configureCompose(libs: VersionCatalog) {
-        buildFeatures {
-            compose = true
-        }
-        composeOptions {
-            val compilerVersion = libs.findVersion("androidxComposeCompiler").get().toString()
-            kotlinCompilerExtensionVersion = compilerVersion
-        }
-    }
-
-    private fun Project.applyDependencies(libs: VersionCatalog) {
-        val bom = libs.findLibrary("androidx-compose-bom").get()
-        dependencies {
-            add("implementation", platform(bom))
-            add("androidTestImplementation", platform(bom))
         }
     }
 

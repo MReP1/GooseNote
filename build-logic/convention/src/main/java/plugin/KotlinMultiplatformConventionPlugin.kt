@@ -29,7 +29,9 @@ class KotlinMultiplatformConventionPlugin : Plugin<Project> {
                 compilerOptions {
                     freeCompilerArgs.addAll(
                         "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-                        "-opt-in=kotlinx.coroutines.FlowPreview"
+                        "-opt-in=kotlinx.coroutines.FlowPreview",
+                        "-P",
+                        "plugin:org.jetbrains.kotlin.parcelize:additionalAnnotation=little.goose.shared.common.CommonParcelize"
                     )
                 }
             }

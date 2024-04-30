@@ -4,26 +4,24 @@ androidxActivityCompose = "1.9.0"
 androidxAppcompat = "1.6.1"
 androidxActivityKtx = "1.9.0"
 androidxComposeBom = "2024.04.01"
-composeNavigation = "2.8.0-alpha02"
-composeLifecycle = "2.8.0-beta01"
+composeNavigation = "2.7.0-alpha03"
+composeLifecycle = "2.8.0-beta02"
 androidxCoreSplashscreen = "1.0.1"
 androidxCore = "1.13.0"
 androidxDataStore = "1.1.0"
-androidxComposeCompiler = "1.5.11"
 androidxTestExt = "1.1.5"
 androidxEspresso = "3.5.1"
 androidxConstraintLayoutCompose = "1.0.1"
 androidxMetrics = "1.0.0-beta01"
-androidLifecycle = "2.8.0-beta01"
+androidLifecycle = "2.8.0-beta02"
 composeCalendar = "2.5.0"
 composeMarkdown = "0.14.0"
 junit4 = "4.13.2"
-kotlin = "1.9.23"
-kotlinMultiplatfromCompose = "1.6.10-beta02"
-protobuf = "3.25.2"
+kotlin = "2.0.0-RC2"
+kotlinMultiplatfromCompose = "1.6.10-beta03"
 sqldelight = "2.0.1"
 kotlinxCoroutines = "1.8.1-Beta"
-ksp = "1.9.23-1.0.19"
+ksp = "2.0.0-RC2-1.0.20"
 protobufPlugin = "0.9.4"
 koin = "3.6.0-Beta3"
 koinCompose = "1.2.0-Beta3"
@@ -36,10 +34,6 @@ androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", ve
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidxCoreSplashscreen" }
 androidx-lifecycle-rumtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidLifecycle" }
-androidx-lifecycle-viewModel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidLifecycle" }
-androidx-lifecycle-viewModel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidLifecycle" }
-androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidLifecycle" }
-androidx-lifecycle-viewModel-savedState = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "androidLifecycle" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
 androidx-constraintLayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "androidxConstraintLayoutCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
@@ -59,8 +53,6 @@ androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espres
 compose-calendar = { group = "com.kizitonwose.calendar", name = "compose", version.ref = "composeCalendar" }
 compose-markdown = { group = "com.mikepenz", name = "multiplatform-markdown-renderer", version.ref = "composeMarkdown" }
 compose-markdown-m3 = { group = "com.mikepenz", name = "multiplatform-markdown-renderer-m3", version.ref = "composeMarkdown" }
-protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobuf" }
-protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protobuf" }
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
@@ -90,6 +82,7 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "kotlinMultiplatfromCompose" }
+jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 
 # Plugins defined by this project
