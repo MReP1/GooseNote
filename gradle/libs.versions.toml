@@ -7,13 +7,10 @@ composeNavigation = "2.7.0-alpha03"
 composeLifecycle = "2.8.0-beta02"
 androidxCoreSplashscreen = "1.0.1"
 androidxCore = "1.13.0"
-androidxDataStore = "1.1.0"
 androidxTestExt = "1.1.5"
 androidxEspresso = "3.5.1"
-androidxConstraintLayoutCompose = "1.0.1"
 androidxMetrics = "1.0.0-beta01"
 androidLifecycle = "2.8.0-beta02"
-composeCalendar = "2.5.0"
 composeMarkdown = "0.14.0"
 junit4 = "4.13.2"
 kotlin = "2.0.0-RC2"
@@ -21,11 +18,9 @@ kotlinMultiplatfromCompose = "1.6.10-beta03"
 sqldelight = "2.0.1"
 kotlinxCoroutines = "1.8.1-Beta"
 ksp = "2.0.0-RC2-1.0.20"
-protobufPlugin = "0.9.4"
 koin = "3.6.0-Beta3"
 koinCompose = "1.2.0-Beta3"
 junit = "1.1.5"
-window = "1.2.0"
 
 [libraries]
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
@@ -34,16 +29,12 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidxCoreSplashscreen" }
 androidx-lifecycle-rumtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidLifecycle" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
-androidx-constraintLayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "androidxConstraintLayoutCompose" }
 androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-androidx-datastore = { group = "androidx.datastore", name = "datastore", version.ref = "androidxDataStore" }
-androidx-dataStore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "androidxDataStore" }
 androidx-metrics = { group = "androidx.metrics", name = "metrics-performance", version.ref = "androidxMetrics" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
-compose-calendar = { group = "com.kizitonwose.calendar", name = "compose", version.ref = "composeCalendar" }
 compose-markdown = { group = "com.mikepenz", name = "multiplatform-markdown-renderer", version.ref = "composeMarkdown" }
 compose-markdown-m3 = { group = "com.mikepenz", name = "multiplatform-markdown-renderer-m3", version.ref = "composeMarkdown" }
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
@@ -55,7 +46,6 @@ koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = 
 koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
 junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-androidx-window = { group = "androidx.window", name = "window", version.ref = "window" }
 sqldelight-coroutines-extensions = { group = "app.cash.sqldelight", name = "coroutines-extensions", version.ref = "sqldelight" }
 sqldelight-android-driver = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqldelight" }
 sqldelight-native-driver = { group = "app.cash.sqldelight", name = "native-driver", version.ref = "sqldelight" }
@@ -73,7 +63,6 @@ android-application = { id = "com.android.application", version.ref = "androidGr
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-protobuf = { id = "com.google.protobuf", version.ref = "protobufPlugin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "kotlinMultiplatfromCompose" }
 jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
@@ -82,6 +71,5 @@ sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 # Plugins defined by this project
 goose-android-application = { id = "goose.android.app", version = "unspecified" }
 goose-android-library = { id = "goose.android.library", version = "unspecified" }
-goose-android-compose = { id = "goose.android.compose", version = "unspecified" }
 goose-kotlin-multiplatform = { id = "goose.kotlin.multiplatform", version = "unspecified" }
 goose-compose-multiplatform = { id = "goose.compose.multiplatform", version = "unspecified" }
