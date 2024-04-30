@@ -5,7 +5,6 @@ import com.android.build.gradle.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.getByName
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
@@ -51,9 +50,6 @@ class KotlinMultiplatformConventionPlugin : Plugin<Project> {
                     }
                 }
             }
-
-            // fixme, issues look like wrong jvm version with 17 (need 19).
-            tasks.register("testClasses")
         }
     }
 }

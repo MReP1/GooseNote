@@ -18,6 +18,7 @@ dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.kotlin.compose.compiler.gradlePlugin)
 }
 
 gradlePlugin {
@@ -29,10 +30,6 @@ gradlePlugin {
         register("androidApp") {
             id = libs.plugins.goose.android.application.get().pluginId
             implementationClass = "plugin.AndroidAppConventionPlugin"
-        }
-        register("androidCompose") {
-            id = libs.plugins.goose.android.compose.get().pluginId
-            implementationClass = "plugin.ComposeConventionPlugin"
         }
         register("kotlinMultiplatform") {
             id = libs.plugins.goose.kotlin.multiplatform.get().pluginId

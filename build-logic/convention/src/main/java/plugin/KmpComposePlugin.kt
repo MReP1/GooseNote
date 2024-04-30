@@ -13,16 +13,21 @@ class KmpComposePlugin : Plugin<Project> {
                 apply(libs.findPlugin("jetbrains-compose").get().get().pluginId)
                 apply(libs.findPlugin("jetbrains-compose-compiler").get().get().pluginId)
             }
-            applyComposeStrongSkippingMode()
-
-            extensions.configure<KotlinMultiplatformExtension> {
-                compilerOptions {
-                    freeCompilerArgs.addAll(
-                        "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
-                        "-opt-in=org.jetbrains.compose.resources.ExperimentalResourceApi",
-                        "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
-                    )
+            runCatching {
+                extensions.configure<KotlinMultiplatformExtension> {
+                    compilerOptions {
+                        freeCompilerArgs.addAll(
+                            "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
+                            "-opt-in=org.jetbrains.compose.resources.ExperimentalResourceApi",
+                            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
+                        )
+                    }
                 }
+            }.onFailure {
+                // Failed cause you do not add kmp plugin.
+            }
+            composeCompiler {
+                enableStrongSkippingMode.set(true)
             }
         }
     }
