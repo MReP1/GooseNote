@@ -26,7 +26,6 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.rumtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(project(":shared:feature:note"))
     implementation(project(":shared:design"))

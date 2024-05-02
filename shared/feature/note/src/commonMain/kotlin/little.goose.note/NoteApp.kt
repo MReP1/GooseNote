@@ -13,7 +13,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import little.goose.note.ui.search.navToSearchNote
-import little.goose.note.ui.search.searchNoteRoute
+import little.goose.note.ui.search.navSearchNoteRoute
 
 @Composable
 fun NoteApp() {
@@ -30,10 +30,10 @@ fun NoteApp() {
             onNavigateToNote = navController::navToNote,
             onNavigateToSearch = navController::navToSearchNote
         )
-        noteRoute(
+        navNoteRoute(
             onBack = navController::popBackStack
         )
-        searchNoteRoute(
+        navSearchNoteRoute(
             onBack = navController::popBackStack,
             navigateToNote = navController::navToNote
         )

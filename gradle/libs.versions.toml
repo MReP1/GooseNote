@@ -1,16 +1,15 @@
 [versions]
-androidGradlePlugin = "8.3.2"
+androidGradlePlugin = "8.4.0"
 androidxActivityCompose = "1.9.0"
 androidxAppcompat = "1.6.1"
 androidxActivityKtx = "1.9.0"
 composeNavigation = "2.7.0-alpha03"
 composeLifecycle = "2.8.0-beta02"
 androidxCoreSplashscreen = "1.0.1"
-androidxCore = "1.13.0"
+androidxCore = "1.13.1"
 androidxTestExt = "1.1.5"
 androidxEspresso = "3.5.1"
 androidxMetrics = "1.0.0-beta01"
-androidLifecycle = "2.8.0-beta02"
 composeMarkdown = "0.14.0"
 junit4 = "4.13.2"
 kotlin = "2.0.0-RC2"
@@ -27,7 +26,6 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivityKtx" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidxCoreSplashscreen" }
-androidx-lifecycle-rumtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidLifecycle" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
 androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -43,7 +41,6 @@ kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-cor
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koinCompose" }
-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
 junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 sqldelight-coroutines-extensions = { group = "app.cash.sqldelight", name = "coroutines-extensions", version.ref = "sqldelight" }

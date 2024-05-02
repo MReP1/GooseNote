@@ -28,7 +28,7 @@ fun NavController.navToSearchNote() {
     navigate(ROUTE_SEARCH_NOTE)
 }
 
-fun NavGraphBuilder.searchNoteRoute(
+fun NavGraphBuilder.navSearchNoteRoute(
     navigateToNote: (Long) -> Unit,
     onBack: () -> Unit
 ) = composable(

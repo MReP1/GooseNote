@@ -38,7 +38,7 @@ fun NavController.navToNote(noteId: Long) {
     navigate("$ROUTE_NOTE?$KEY_NOTE_ID=${noteId}")
 }
 
-fun NavGraphBuilder.noteRoute(onBack: () -> Unit) {
+fun NavGraphBuilder.navNoteRoute(onBack: () -> Unit) {
     composable(
         route = FULL_ROUTE_NOTE,
         arguments = listOf(
