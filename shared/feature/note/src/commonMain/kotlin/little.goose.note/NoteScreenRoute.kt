@@ -48,28 +48,7 @@ fun NavGraphBuilder.navNoteRoute(onBack: () -> Unit) {
             }
         )
     ) {
-        val insertOrReplaceNoteContentBlocks: InsertOrReplaceNoteContentBlocksUseCase = koinInject()
-        val getNoteWithContentFlowWithNoteId: GetNoteWithContentFlowWithNoteIdUseCase = koinInject()
-        val insertOrReplaceNoteContentBlock: InsertOrReplaceNoteContentBlockUseCase = koinInject()
-        val insertOrReplaceNote: InsertOrReplaceNoteUseCase = koinInject()
-        val deleteNoteAndItsBlocks: DeleteNoteAndItsBlocksUseCase = koinInject()
-        val deleteNoteContentBlockUseCase: DeleteBlockUseCase = koinInject()
-        val viewModel = viewModel(
-            modelClass = NoteViewModel::class,
-            factory = viewModelFactory {
-                addInitializer(NoteViewModel::class) {
-                    NoteViewModel(
-                        createSavedStateHandle(),
-                        insertOrReplaceNoteContentBlocks,
-                        getNoteWithContentFlowWithNoteId,
-                        insertOrReplaceNoteContentBlock,
-                        insertOrReplaceNote,
-                        deleteNoteAndItsBlocks,
-                        deleteNoteContentBlockUseCase
-                    )
-                }
-            }
-        )
+        val viewModel: NoteViewModel = noteViewModel()
         val screenState by viewModel.noteScreenStateHolder.noteScreenState.collectAsState()
         NoteScreenRoute(
             modifier = Modifier.fillMaxSize(),
