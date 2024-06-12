@@ -9,6 +9,7 @@ actual class Vibrator {
             Vibration.ClickShot,
             is Vibration.OneShot -> {
                 UIImpactFeedbackGenerator(UIImpactFeedbackStyle.UIImpactFeedbackStyleMedium)
+                    .impactOccurred()
             }
         }
     }
