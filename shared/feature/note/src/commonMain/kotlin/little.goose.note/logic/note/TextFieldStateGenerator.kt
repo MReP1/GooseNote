@@ -2,8 +2,8 @@
 
 package little.goose.note.logic.note
 
-import androidx.compose.foundation.text2.input.TextFieldState
-import androidx.compose.foundation.text2.input.textAsFlow
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.runtime.snapshotFlow
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.NonCancellable
@@ -31,7 +31,7 @@ fun TextFieldStateGetter(
                 collectUpdateJobMap[blockId]?.cancel()
                 collectUpdateJobMap[blockId] = coroutineScope.launch {
                     var tempCharSequence: CharSequence? = null
-                    textFieldState.textAsFlow().map { charSequence ->
+                    snapshotFlow { textFieldState.text }.map { charSequence ->
                         val nwc = getNoteWithContent() ?: return@map charSequence
                         val blockIndex = nwc.content.indexOfLast { it.id == blockId }
                             .takeIf { it != -1 } ?: return@map charSequence

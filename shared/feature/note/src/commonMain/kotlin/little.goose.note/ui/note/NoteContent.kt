@@ -1,8 +1,5 @@
-@file:OptIn(ExperimentalFoundationApi::class)
-
 package little.goose.note.ui.note
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,11 +12,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text2.BasicTextField2
-import androidx.compose.foundation.text2.input.TextFieldLineLimits
-import androidx.compose.foundation.text2.input.TextFieldState
+import androidx.compose.foundation.text.input.TextFieldLineLimits
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
@@ -123,7 +118,7 @@ fun NoteEditContent(
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         item {
-            BasicTextField2(
+            BasicTextField(
                 state = state.titleState,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -135,9 +130,9 @@ fun NoteEditContent(
                 textStyle = MaterialTheme.typography.titleLarge.copy(
                     color = LocalContentColor.current
                 ),
-                keyboardActions = KeyboardActions(
-                    onDone = { action(NoteScreenIntent.AddBlockToBottom) }
-                ),
+                onKeyboardAction = {
+                    action(NoteScreenIntent.AddBlockToBottom)
+                },
                 decorator = {
                     if (state.titleState.text.isEmpty()) {
                         Text(
@@ -157,10 +152,10 @@ fun NoteEditContent(
             key = { state.contentStateList[it].id }
         ) {
             val contentState = state.contentStateList[it]
+            Modifier
+                .fillMaxWidth()
             NoteContentBlockItem(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .animateItemPlacement(),
+                modifier = Modifier.animateItem(),
                 textFieldState = contentState.contentState,
                 onBlockDelete = {
                     action(NoteScreenIntent.DeleteBlock(contentState.id))

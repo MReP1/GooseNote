@@ -2,7 +2,6 @@ package little.goose.note.ui.note
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
@@ -10,11 +9,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text2.BasicTextField2
-import androidx.compose.foundation.text2.input.TextFieldState
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Delete
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
@@ -38,7 +36,6 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun NoteContentBlockItem(
     modifier: Modifier = Modifier,
@@ -113,7 +110,6 @@ fun NoteContentBlockItem(
 
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun NoteContentBlockTextField(
     modifier: Modifier,
@@ -127,7 +123,7 @@ fun NoteContentBlockTextField(
         shape = MaterialTheme.shapes.large,
         tonalElevation = tonalElevation
     ) {
-        BasicTextField2(
+        BasicTextField(
             modifier = Modifier
                 .padding(horizontal = 16.dp, vertical = 10.dp)
                 .fillMaxWidth()

@@ -3,9 +3,9 @@
 package little.goose.note.logic.note
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.text2.input.TextFieldState
-import androidx.compose.foundation.text2.input.placeCursorAtEnd
-import androidx.compose.foundation.text2.input.textAsFlow
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.placeCursorAtEnd
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.focus.FocusRequester
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.launchIn
@@ -33,7 +33,7 @@ internal fun ContentStateMapper(
 ): (NoteWithContent, NoteScreenMode) -> NoteContentState {
 
     val titleState = TextFieldState().apply {
-        textAsFlow().onEach { title ->
+        snapshotFlow { text }.onEach { title ->
             getNoteWithContent()?.note?.copy(title = title.toString())?.let { note ->
                 val id = insertOrReplaceNote(note)
                 if (getNoteId() == -1L) {
