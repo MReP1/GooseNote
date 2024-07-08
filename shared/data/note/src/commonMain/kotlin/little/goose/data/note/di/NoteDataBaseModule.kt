@@ -1,6 +1,5 @@
 package little.goose.data.note.di
 
-import GooseNoteDriverFactory
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,11 +10,8 @@ import little.goose.data.note.NoteRepositoryImpl
 import little.goose.data.note.local.NoteDao
 import little.goose.data.note.local.NoteDatabase
 import little.goose.data.note.local.NoteDatabaseRoomImpl
-import little.goose.data.note.local.NoteDatabaseSqlDelightImpl
 import little.goose.data.note.local.RoomNoteDatabase
 import little.goose.data.note.local.noteDatabaseFactory
-import little.goose.note.GooseNoteDatabase
-import noteDatabaseDriver
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -28,13 +24,6 @@ val noteDatabaseModule = module {
             Dispatchers.IO + SupervisorJob() +
                     CoroutineExceptionHandler { _, throwable -> throwable.printStackTrace() }
         )
-    }
-
-    noteDatabaseDriver()
-
-    single<GooseNoteDatabase> {
-        val factory = get<GooseNoteDriverFactory>()
-        GooseNoteDatabase(factory.create())
     }
 
     single<RoomNoteDatabase> {

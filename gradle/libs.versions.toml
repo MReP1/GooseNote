@@ -14,7 +14,6 @@ composeMarkdown = "0.16.0"
 junit4 = "4.13.2"
 kotlin = "2.0.0"
 kotlinMultiplatfromCompose = "1.7.0-alpha01"
-sqldelight = "2.0.1"
 kotlinxCoroutines = "1.8.1"
 ksp = "2.0.0-1.0.21"
 koin = "3.6.0-Beta4"
@@ -45,9 +44,6 @@ koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = 
 koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koinCompose" }
 junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-sqldelight-coroutines-extensions = { group = "app.cash.sqldelight", name = "coroutines-extensions", version.ref = "sqldelight" }
-sqldelight-android-driver = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqldelight" }
-sqldelight-native-driver = { group = "app.cash.sqldelight", name = "native-driver", version.ref = "sqldelight" }
 compose-navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 compose-viewModel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "composeLifecycle" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
@@ -69,7 +65,6 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "kotlinMultiplatfromCompose" }
 jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 room = { id = "androidx.room", version.ref = "room" }
 
 # Plugins defined by this project

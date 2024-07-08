@@ -1,16 +1,6 @@
 plugins {
     alias(libs.plugins.goose.kotlin.multiplatform)
-    alias(libs.plugins.sqldelight)
     alias(libs.plugins.goose.room.multiplatform)
-}
-
-sqldelight {
-    databases {
-        create("GooseNoteDatabase") {
-            packageName.set("little.goose.note")
-        }
-    }
-    linkSqlite = true
 }
 
 kotlin {
@@ -23,23 +13,21 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "DataNote"
-            isStatic = false
+            isStatic = true
+            linkerOpts.add("-lsqlite3")
         }
     }
 
     sourceSets {
         commonMain.dependencies {
             compileOnly(libs.koin.core)
-            implementation(libs.sqldelight.coroutines.extensions)
             implementation(project(":shared:common"))
             api(project(":shared:data:database"))
         }
         androidMain.dependencies {
-            implementation(libs.sqldelight.android.driver)
             implementation(libs.koin.android)
         }
         iosMain.dependencies {
-            implementation(libs.sqldelight.native.driver)
         }
     }
 
