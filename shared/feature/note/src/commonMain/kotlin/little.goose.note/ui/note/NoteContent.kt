@@ -21,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.unit.dp
@@ -32,11 +33,13 @@ import com.mikepenz.markdown.m3.markdownTypography
 @Stable
 sealed class NoteContentState {
 
+    @Stable
     data class Edit(
         val titleState: TextFieldState,
         val contentStateList: List<NoteBlockState>
     ) : NoteContentState()
 
+    @Stable
     data class Preview(val content: String) : NoteContentState()
 
 }
@@ -130,8 +133,8 @@ fun NoteEditContent(
                 textStyle = MaterialTheme.typography.titleLarge.copy(
                     color = LocalContentColor.current
                 ),
-                onKeyboardAction = {
-                    action(NoteScreenIntent.AddBlockToBottom)
+                onKeyboardAction = remember {
+                    { action(NoteScreenIntent.AddBlockToBottom) }
                 },
                 decorator = {
                     if (state.titleState.text.isEmpty()) {
@@ -149,17 +152,13 @@ fun NoteEditContent(
 
         items(
             count = state.contentStateList.size,
-            key = { state.contentStateList[it].id }
-        ) {
-            val contentState = state.contentStateList[it]
-            Modifier
-                .fillMaxWidth()
+            key = { index -> state.contentStateList[index].id }
+        ) { index ->
+            val contentState = state.contentStateList[index]
             NoteContentBlockItem(
-                modifier = Modifier.animateItem(),
+                modifier = Modifier.fillMaxWidth().animateItem(fadeInSpec = null),
                 textFieldState = contentState.contentState,
-                onBlockDelete = {
-                    action(NoteScreenIntent.DeleteBlock(contentState.id))
-                },
+                onBlockDelete = { action(NoteScreenIntent.DeleteBlock(contentState.id)) },
                 focusRequester = contentState.focusRequester,
                 interactionSource = contentState.interaction
             )

@@ -9,9 +9,9 @@ interface NoteDatabase {
 
     val deleteNoteIdListFlow: Flow<List<Long>>
 
-    fun getNoteFlow(noteId: Long): Flow<Note>
+    fun getNote(noteId: Long): Flow<Note>
 
-    suspend fun insertOrReplaceNote(note: Note): Long
+    suspend fun upsertNote(note: Note): Long
 
     fun getNoteWithContentFlow(noteId: Long): Flow<NoteWithContent>
 
@@ -23,9 +23,9 @@ interface NoteDatabase {
 
     suspend fun deleteBlockWithNoteId(noteId: Long)
 
-    suspend fun insertOrReplaceNoteContentBlock(noteContentBlock: NoteContentBlock): Long
+    suspend fun upsertNoteContentBlock(noteContentBlock: NoteContentBlock): Long
 
-    suspend fun insertOrReplaceNoteContentBlocks(noteContentBlocks: List<NoteContentBlock>)
+    suspend fun upsertNoteContentBlocks(noteContentBlocks: List<NoteContentBlock>)
 
     fun getNoteWithContentFlow(): Flow<List<NoteWithContent>>
 

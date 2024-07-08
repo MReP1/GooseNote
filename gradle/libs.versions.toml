@@ -20,6 +20,8 @@ ksp = "2.0.0-1.0.21"
 koin = "3.6.0-Beta4"
 koinCompose = "1.2.0-Beta4"
 junit = "1.2.1"
+room = "2.7.0-alpha04"
+sqlite = "2.5.0-SNAPSHOT"
 
 [libraries]
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
@@ -48,6 +50,10 @@ sqldelight-android-driver = { group = "app.cash.sqldelight", name = "android-dri
 sqldelight-native-driver = { group = "app.cash.sqldelight", name = "native-driver", version.ref = "sqldelight" }
 compose-navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 compose-viewModel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "composeLifecycle" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-runtime-android = { module = "androidx.room:room-runtime-android", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -64,9 +70,11 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "kotlinMultiplatfromCompose" }
 jetbrains-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
+room = { id = "androidx.room", version.ref = "room" }
 
 # Plugins defined by this project
 goose-android-application = { id = "goose.android.app", version = "unspecified" }
 goose-android-library = { id = "goose.android.library", version = "unspecified" }
 goose-kotlin-multiplatform = { id = "goose.kotlin.multiplatform", version = "unspecified" }
 goose-compose-multiplatform = { id = "goose.compose.multiplatform", version = "unspecified" }
+goose-room-multiplatform = { id = "gooose.room.multiplatform", version = "unspecified" }

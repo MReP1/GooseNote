@@ -13,11 +13,11 @@ class NoteRepositoryImpl(
     override val deleteNoteIdListFlow: Flow<List<Long>> = dataBase.deleteNoteIdListFlow
 
     override fun getNoteFlow(noteId: Long): Flow<Note> {
-        return dataBase.getNoteFlow(noteId)
+        return dataBase.getNote(noteId)
     }
 
     override suspend fun insertOrReplaceNote(note: Note): Long {
-        return dataBase.insertOrReplaceNote(note)
+        return dataBase.upsertNote(note)
     }
 
     override fun getNoteWithContentFlow(noteId: Long): Flow<NoteWithContent> {
@@ -41,11 +41,11 @@ class NoteRepositoryImpl(
     }
 
     override suspend fun insertOrReplaceNoteContentBlock(noteContentBlock: NoteContentBlock): Long {
-        return dataBase.insertOrReplaceNoteContentBlock(noteContentBlock)
+        return dataBase.upsertNoteContentBlock(noteContentBlock)
     }
 
     override suspend fun insertOrReplaceNoteContentBlocks(noteContentBlocks: List<NoteContentBlock>) {
-        return dataBase.insertOrReplaceNoteContentBlocks(noteContentBlocks)
+        return dataBase.upsertNoteContentBlocks(noteContentBlocks)
     }
 
     override fun getNoteWithContentFlow(): Flow<List<NoteWithContent>> {

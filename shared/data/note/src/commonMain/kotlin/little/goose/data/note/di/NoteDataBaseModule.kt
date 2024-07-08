@@ -8,8 +8,12 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
 import little.goose.data.note.NoteRepository
 import little.goose.data.note.NoteRepositoryImpl
+import little.goose.data.note.local.NoteDao
 import little.goose.data.note.local.NoteDatabase
-import little.goose.data.note.local.SqlDelightNoteDatabase
+import little.goose.data.note.local.NoteDatabaseRoomImpl
+import little.goose.data.note.local.NoteDatabaseSqlDelightImpl
+import little.goose.data.note.local.RoomNoteDatabase
+import little.goose.data.note.local.noteDatabaseFactory
 import little.goose.note.GooseNoteDatabase
 import noteDatabaseDriver
 import org.koin.core.qualifier.named
@@ -33,8 +37,16 @@ val noteDatabaseModule = module {
         GooseNoteDatabase(factory.create())
     }
 
+    single<RoomNoteDatabase> {
+        noteDatabaseFactory()
+    }
+
+    single<NoteDao> {
+        get<RoomNoteDatabase>().userDao()
+    }
+
     single<NoteDatabase> {
-        SqlDelightNoteDatabase(get())
+        NoteDatabaseRoomImpl(get())
     }
 
     single<NoteRepository> {

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.goose.kotlin.multiplatform)
     alias(libs.plugins.sqldelight)
+    alias(libs.plugins.goose.room.multiplatform)
 }
 
 sqldelight {
@@ -49,4 +50,8 @@ android {
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }

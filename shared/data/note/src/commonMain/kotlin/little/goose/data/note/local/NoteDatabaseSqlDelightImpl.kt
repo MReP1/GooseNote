@@ -18,21 +18,21 @@ import little.goose.data.note.bean.NoteContentBlock
 import little.goose.data.note.bean.NoteWithContent
 import little.goose.note.GooseNoteDatabase
 
-class SqlDelightNoteDatabase(
+class NoteDatabaseSqlDelightImpl(
     private val database: GooseNoteDatabase
 ) : NoteDatabase {
 
     private val _deleteNoteIdListSharedFlow = MutableSharedFlow<List<Long>>()
     override val deleteNoteIdListFlow = _deleteNoteIdListSharedFlow.asSharedFlow()
 
-    override fun getNoteFlow(noteId: Long): Flow<Note> {
+    override fun getNote(noteId: Long): Flow<Note> {
         return database.gooseNoteQueries
             .getNote(noteId) { id, title, time, _ -> Note(id, title, time) }
             .asFlow()
             .mapNotNull { it.executeAsOneOrNull() }
     }
 
-    override suspend fun insertOrReplaceNote(note: Note): Long {
+    override suspend fun upsertNote(note: Note): Long {
         return withContext(Dispatchers.IO) {
             database.gooseNoteQueries.transactionWithResult {
                 database.gooseNoteQueries.insertOrReplaceNote(note.id, note.title, note.time, "")
@@ -156,7 +156,7 @@ class SqlDelightNoteDatabase(
         }
     }
 
-    override suspend fun insertOrReplaceNoteContentBlock(
+    override suspend fun upsertNoteContentBlock(
         noteContentBlock: NoteContentBlock
     ) = withContext(Dispatchers.IO) {
         database.transactionWithResult {
@@ -170,7 +170,7 @@ class SqlDelightNoteDatabase(
         }
     }
 
-    override suspend fun insertOrReplaceNoteContentBlocks(noteContentBlocks: List<NoteContentBlock>) {
+    override suspend fun upsertNoteContentBlocks(noteContentBlocks: List<NoteContentBlock>) {
         return database.transaction {
             noteContentBlocks.forEach { block ->
                 database.gooseNoteQueries.insertOrReplaceNoteContentBlock(

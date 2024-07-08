@@ -39,5 +39,9 @@ gradlePlugin {
             id = libs.plugins.goose.compose.multiplatform.get().pluginId
             implementationClass = "plugin.KmpComposePlugin"
         }
+        register("roomMultiplatform") {
+            id = libs.plugins.goose.room.multiplatform.get().pluginId
+            implementationClass = "plugin.RoomMultiplatformPlugin"
+        }
     }
 }
