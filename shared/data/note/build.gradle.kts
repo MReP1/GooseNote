@@ -20,7 +20,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            compileOnly(libs.koin.core)
+            implementation(libs.koin.core)
             implementation(project(":shared:common"))
             api(project(":shared:data:database"))
         }

@@ -31,7 +31,7 @@ kotlin {
                 implementation(project(":shared:common"))
                 implementation(project(":shared:resource"))
                 implementation(libs.koin.compose)
-                compileOnly(libs.koin.core)
+                implementation(libs.koin.core)
             }
         }
         androidMain {

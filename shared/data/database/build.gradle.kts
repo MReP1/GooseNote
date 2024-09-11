@@ -18,7 +18,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            compileOnly(libs.koin.core)
+            implementation(libs.koin.core)
         }
         androidMain.dependencies {
             implementation(libs.koin.android)

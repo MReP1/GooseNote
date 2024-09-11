@@ -30,6 +30,6 @@ dependencies {
     implementation(project(":shared:feature:note"))
     implementation(project(":shared:design"))
     implementation(project(":shared:ui"))
-    compileOnly(libs.koin.core)
+    implementation(libs.koin.core)
     implementation(libs.koin.android)
 }

@@ -27,7 +27,7 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.components.resources)
                 implementation(libs.koin.compose)
-                compileOnly(libs.koin.core)
+                implementation(libs.koin.core)
             }
         }
         androidMain {
