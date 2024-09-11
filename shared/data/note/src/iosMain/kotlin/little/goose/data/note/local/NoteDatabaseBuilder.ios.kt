@@ -12,7 +12,6 @@ actual fun Scope.noteDatabaseFactory(): RoomNoteDatabase {
     val dbFile = NSHomeDirectory() + "/$TABLE_NOTE"
     return Room.databaseBuilder<RoomNoteDatabase>(
         name = dbFile,
-        factory = { RoomNoteDatabase::class.instantiateImpl() }
     ).fallbackToDestructiveMigrationOnDowngrade(true)
         .addMigrations(*noteMigrations)
         .setDriver(BundledSQLiteDriver())

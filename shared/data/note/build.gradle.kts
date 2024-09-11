@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.goose.kotlin.multiplatform)
-    alias(libs.plugins.goose.room.multiplatform)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -23,6 +24,8 @@ kotlin {
             implementation(libs.koin.core)
             implementation(project(":shared:common"))
             api(project(":shared:data:database"))
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
         androidMain.dependencies {
             implementation(libs.koin.android)
@@ -42,4 +45,10 @@ android {
 
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+dependencies {
+    listOf("kspAndroid", "kspCommonMainMetadata").forEach {
+        add(it, libs.room.compiler)
+    }
 }

@@ -72,4 +72,3 @@ goose-android-application = { id = "goose.android.app", version = "unspecified" 
 goose-android-library = { id = "goose.android.library", version = "unspecified" }
 goose-kotlin-multiplatform = { id = "goose.kotlin.multiplatform", version = "unspecified" }
 goose-compose-multiplatform = { id = "goose.compose.multiplatform", version = "unspecified" }
-goose-room-multiplatform = { id = "gooose.room.multiplatform", version = "unspecified" }
