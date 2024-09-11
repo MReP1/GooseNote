@@ -26,9 +26,6 @@ class KmpComposePlugin : Plugin<Project> {
             }.onFailure {
                 // Failed cause you do not add kmp plugin.
             }
-            composeCompiler {
-                enableStrongSkippingMode.set(true)
-            }
         }
     }
 
