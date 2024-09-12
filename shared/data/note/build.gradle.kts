@@ -30,7 +30,11 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.koin.android)
         }
-        iosMain.dependencies {
+        iosMain {
+            kotlin.srcDir("build/generated/ksp/metadata")
+            dependencies {
+
+            }
         }
     }
 
