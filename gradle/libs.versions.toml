@@ -18,8 +18,8 @@ kotlinxCoroutines = "1.8.1"
 ksp = "2.0.20-1.0.24"
 koin = "4.0.0-RC2"
 junit = "1.2.1"
-room = "2.7.0-alpha07"
-sqlite = "2.5.0-alpha07"
+room = "2.7.0-alpha11"
+sqlite = "2.5.0-alpha11"
 
 [libraries]
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
